@@ -1,6 +1,6 @@
 #=============FEETECH SERVO MOTOR-MODBUS RTU (LINUX VERSION)=================
 import minimalmodbus as mod
-from feetech import api
+from feetech import api #removed
 import time
 from datetime import datetime, date
 import os
@@ -144,7 +144,7 @@ except:
     raise
 
 
-#------HARD RESET
+#------HARD RESET IN CASE OF FAILURE
 #instrument.write_register(15, 61313)
 #pos_off = instrument.read_register(15)
 #print("Position offset value changed to = ", pos_off)
@@ -155,34 +155,6 @@ except:
 #instrument.write_register(api.goal_pos, 1024)
 #curr_pos = instrument.read_register(api.pres_pos)
 #print("current position after = ", curr_pos)\
-'''
-try:
-    instrument = mod.Instrument('/dev/ttyUSB1', 1, mode = mod.MODE_RTU)
-    instrument.serial.baudrate = 115200
-    instrument.serial.bytesize = 8
-    instrument.serial.parity = mod.serial.PARITY_NONE
-    instrument.serial.stopbits = 1
-    instrument.serial.timeout = 1       #seconds
-
-    print("Done")
-    
-    pos_off_val = instrument.read_register(api.pos_off_val)
-    pres_pos = instrument.read_register(api.pres_pos)
-    p_gain = instrument.read_register(api.pos_p_gain)
-    accel = instrument.read_register(api.accel)
-    i_gain = instrument.read_register(api.pos_i_gain)
-    baud = instrument.read_register(api.baud_rate)
-    instrument.write_register(api.pos_off_val, 63747)
-    instrument.write_register(api.goal_pos, 2600)
-    print("pos off = ", pos_off_val, "pres_pos = ", pres_pos, "p gain", p_gain, "accel = ", accel, "i gain = ", i_gain, "baud = ", baud)
-
-except:
-    raise
-'''
-  
-#instrument.write_register(api.work_mode, 0)
-#instrument.write_register(api.torq_enable, 1)
-#instrument.write_register(api.goal_pos, 0)
 
 
 
